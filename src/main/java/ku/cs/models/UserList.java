@@ -43,9 +43,11 @@ public class UserList {
     //TODO: return User object if username and password is correct, otherwise return null
     public User login(String username, String password) {
         if (users.contains(findUserByUsername(username))) {
-            if (users.get(users.indexOf(findUserByUsername(username))).validatePassword(password)) {
-                return findUserByUsername(username);
+            User target = findUserByUsername(username);
+            if (target.validatePassword(password)==true) {
+                return target;
             }
+
             else {return null;}
 
         }

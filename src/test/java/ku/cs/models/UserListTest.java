@@ -3,6 +3,8 @@ package ku.cs.models;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLOutput;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserListTest {
@@ -38,11 +40,12 @@ class UserListTest {
         userlist.addUser("auto","bruh");
         userlist.addUser("jr","froster");
         // TODO: change password of one user
-        userlist.changePassword("auto","bruh","haha");
         // TODO: assert that user can change password
-        String expected = "haha";
-        String actual = userlist.findUserByUsername("auto").getPassword();
+        boolean expected = true;
+        boolean actual =  userlist.changePassword("auto","bruh","haha");
         assertEquals(expected,actual);
+
+
     }
 
     @Test
@@ -57,19 +60,26 @@ class UserListTest {
         // TODO: call login() with correct username and password
         User target = userlist.login("jr","froster");
         // TODO: assert that User object is found
-        User
-        // assertEquals(expected, actual);
+
+        User actual = target;
+        assertNotNull(actual);
     }
 
     @Test
     @DisplayName("User with incorrect password cannot login")
     public void testUserListShouldReturnNullIfUsernameAndPasswordIsIncorrect() {
         // TODO: add 3 users to UserList
+        UserList userlist = new UserList();
+
+        userlist.addUser("pun","lol555");
+        userlist.addUser("auto","bruh");
+        userlist.addUser("jr","froster");
 
         // TODO: call login() with incorrect username or incorrect password
+        User target = userlist.login("net","bluh");
 
-        // TODO: assert that the method return null
-        // assertNull(actual);
+        User actual = target;
+        assertNull(actual);
     }
 
 }

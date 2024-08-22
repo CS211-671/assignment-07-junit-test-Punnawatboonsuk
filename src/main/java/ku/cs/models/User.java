@@ -41,6 +41,6 @@ public class User {
 
     public String toString(){
 
-        return username + " " + password;
+        return username + " " + getPassword();
     }
 }
