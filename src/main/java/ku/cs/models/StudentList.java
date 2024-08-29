@@ -39,6 +39,12 @@ public class StudentList {
         }
         return null;
     }
+    public Student findStudentByObject(Student student) {
+        if (students.contains(student)){
+            return student;
+        }
+        return null;
+    }
 
     public void giveScoreToId(String id, double score) {
         Student exist = findStudentById(id);
